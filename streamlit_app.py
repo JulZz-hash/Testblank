@@ -152,4 +152,4 @@ def generate_random_quest():
         "reward": reward,
         "difficulty": difficulty
     }
-    
+    $ streamlit run streamlit_app.py
