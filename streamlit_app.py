@@ -3,7 +3,7 @@ import streamlit as st
 if "player" not in st.session_state:
     st.session_state["player"] = {"species": "Mensch", "credits": 100, "inventory": []}
 if "npcs" not in st.session_state:
-    st.session_state["npcs"] = NPCS
+
 
 # Seitenkopf
 st.title("🌌 Star Wars Story Game")
