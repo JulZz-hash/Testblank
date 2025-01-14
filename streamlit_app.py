@@ -106,3 +106,60 @@ def automatic_npc_actions(npcs):
             print(f"⚠️ {npc_name} hat negative Absichten. Er plant etwas gegen dich!")
         elif npc_data["relationship"] > 50:
             print(f"✨ {npc_name} bietet dir Hilfe oder Belohnungen an.")
+            
+            import json
+
+SAVE_FILE = "savegame.json"
+
+def save_game(player, npcs):
+    """Speichert den aktuellen Spielstatus."""
+    data = {
+        "player": player,
+        "npcs": npcs
+    }
+    with open(SAVE_FILE, "w") as file:
+        json.dump(data, file, indent=4)
+    print("💾 Spiel gespeichert!")
+
+def load_game():
+    """Lädt den gespeicherten Spielstatus."""
+    try:
+        with open(SAVE_FILE, "r") as file:
+            data = json.load(file)
+            print("💾 Spielstand geladen!")
+            return data["player"], data["npcs"]
+    except FileNotFoundError:
+        print("❌ Kein gespeicherter Spielstand gefunden.")
+        return None, None
+        
+        import random
+
+ACTORS = ["ein Sith-Lord", "eine Jedi-Meisterin", "ein Kopfgeldjäger", "eine imperiale Wache", "ein Droidenhändler"]
+ACTIONS = ["greift dich an", "bittet um Hilfe", "verkauft dir seltene Gegenstände", "enthüllt dir geheime Informationen", "stellt dir eine Falle"]
+LOCATIONS = ["in einer verlassenen Raumstation", "auf einem belebten Marktplatz", "in den dunklen Gassen von Coruscant", "in einer Cantina", "in einer geheimen Basis"]
+
+def generate_random_event():
+    """Erstellt ein zufälliges Ereignis basierend auf modularen Bausteinen."""
+    actor = random.choice(ACTORS)
+    action = random.choice(ACTIONS)
+    location = random.choice(LOCATIONS)
+    return f"{actor} {action} {location}."
+    
+    import random
+
+QUEST_OBJECTIVES = ["eine Geisel retten", "einen gestohlenen Droiden finden", "einen Sith-Lord besiegen", "einen Schmuggelauftrag durchführen"]
+LOCATIONS = ["auf Tatooine", "in einer Cantina auf Coruscant", "in einer alten Jedi-Ruine", "auf einem imperialen Sternzerstörer"]
+REWARDS = [100, 200, 300, 500]
+DIFFICULTY = ["einfach", "mittel", "schwer", "extrem"]
+
+def generate_random_quest():
+    """Erstellt eine zufällige Quest."""
+    objective = random.choice(QUEST_OBJECTIVES)
+    location = random.choice(LOCATIONS)
+    reward = random.choice(REWARDS)
+    difficulty = random.choice(DIFFICULTY)
+    return {
+        "description": f"{objective} {location}.",
+        "reward": reward,
+        "difficulty": difficulty
+    }
