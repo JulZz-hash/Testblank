@@ -1,9 +1,4 @@
 import streamlit as st
-from npc_interactions import interact_with_npc, NPCS, automatic_npc_actions
-from save_system import save_game, load_game
-from events import generate_random_event
-from dynamic_quests import generate_random_quest
-
 # Globale Variablen für den aktuellen Spielstatus
 if "player" not in st.session_state:
     st.session_state["player"] = {"species": "Mensch", "credits": 100, "inventory": []}
